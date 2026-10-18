@@ -49,9 +49,17 @@ const globalAnimations = `
     transform: translate(var(--move-x), var(--move-y)) scale(1.15) rotate(140deg);
   }
 }
+
+@keyframes codeFloat {
+  0% { transform: translateY(100%); opacity: 0 }
+  8% { opacity: 1 }
+  60% { opacity: 0.08 }
+  100% { transform: translateY(-140%); opacity: 0 }
+}
 `;
 
 const MiniGame = React.lazy(() => import("./components/MiniGame"));
+const CodeBackground = React.lazy(() => import("./components/CodeBackground"));
 
 export default function App() {
   const dotRef = useRef(null);
@@ -164,11 +172,11 @@ const NameParticles = React.lazy(() => import("./components/NameParticles"));
               style={styles.avatarCircleOuter}
               onMouseEnter={(e) => {
                 e.currentTarget.style.boxShadow =
-                  "0 0 25px rgba(165,93,255,0.6)";
+                  "0 0 25px rgba(58,123,213,0.6)";
               }}
               onMouseLeave={(e) => {
                 e.currentTarget.style.boxShadow =
-                  "0 8px 30px rgba(165,93,255,0.28)";
+                  "0 8px 30px rgba(58,123,213,0.28)";
               }}
             >
               <picture>
@@ -236,12 +244,12 @@ const NameParticles = React.lazy(() => import("./components/NameParticles"));
         style={styles.skillIconCard}
         onMouseEnter={(e) => {
           e.currentTarget.style.transform = "translateY(-6px) scale(1.02)";
-          e.currentTarget.style.border = "1px solid rgba(178, 102, 255, 0.55)";
-          e.currentTarget.style.boxShadow = "0 12px 28px rgba(178, 102, 255, 0.22)";
+          e.currentTarget.style.border = "1px solid rgba(78, 168, 255, 0.55)";
+          e.currentTarget.style.boxShadow = "0 12px 28px rgba(78, 168, 255, 0.22)";
         }}
         onMouseLeave={(e) => {
           e.currentTarget.style.transform = "translateY(0) scale(1)";
-          e.currentTarget.style.border = "1px solid rgba(178, 102, 255, 0.22)";
+          e.currentTarget.style.border = "1px solid rgba(78, 168, 255, 0.22)";
           e.currentTarget.style.boxShadow = "0 8px 24px rgba(0, 0, 0, 0.25)";
         }}
       >
@@ -277,7 +285,7 @@ const NameParticles = React.lazy(() => import("./components/NameParticles"));
   onMouseEnter={(e) => {
     e.currentTarget.style.transform = "translateY(-8px)";
     e.currentTarget.style.boxShadow =
-      "0 20px 40px rgba(157,89,255,0.25)";
+      "0 20px 40px rgba(62,140,222,0.22)";
   }}
   onMouseLeave={(e) => {
     e.currentTarget.style.transform = "translateY(0)";
@@ -285,6 +293,11 @@ const NameParticles = React.lazy(() => import("./components/NameParticles"));
   }}
 >
               <div style={styles.projectGlow} />
+              {project.num === "CASE 01" && (
+                <Suspense fallback={null}>
+                  <CodeBackground />
+                </Suspense>
+              )}
               {project.num === "CASE 02" && (
                 <Suspense fallback={null}>
                   <MiniGame />
@@ -309,16 +322,16 @@ const NameParticles = React.lazy(() => import("./components/NameParticles"));
   onMouseEnter={(e) => {
     e.currentTarget.style.transform = "scale(1.05)";
     e.currentTarget.style.boxShadow =
-      "0 12px 30px rgba(157,89,255,0.35)";
+      "0 12px 30px rgba(62,140,222,0.28)";
     e.currentTarget.style.background =
-      "linear-gradient(90deg, #b56dff, #ee7dff)";
+      "linear-gradient(90deg, #4ea8ff, #7de0ff)";
   }}
   onMouseLeave={(e) => {
     e.currentTarget.style.transform = "scale(1)";
     e.currentTarget.style.boxShadow =
-      "0 8px 25px rgba(157,89,255,0.25)";
+      "0 8px 25px rgba(62,140,222,0.22)";
     e.currentTarget.style.background =
-      "linear-gradient(90deg, #9d59ff, #d86fff)";
+      "linear-gradient(90deg, #2f8fff, #5ec8ff)";
   }}
 >
   Ver no GitHub
@@ -347,11 +360,11 @@ const NameParticles = React.lazy(() => import("./components/NameParticles"));
   style={styles.contactButton}
   onMouseEnter={(e) => {
     e.currentTarget.style.transform = "translateY(-4px)";
-    e.currentTarget.style.background = "rgba(157,89,255,0.16)";
+    e.currentTarget.style.background = "rgba(78,168,255,0.16)";
   }}
   onMouseLeave={(e) => {
     e.currentTarget.style.transform = "translateY(0)";
-    e.currentTarget.style.background = "rgba(157,89,255,0.08)";
+    e.currentTarget.style.background = "rgba(78,168,255,0.08)";
   }}
 >
   GitHub
@@ -364,11 +377,11 @@ const NameParticles = React.lazy(() => import("./components/NameParticles"));
   style={styles.contactButton}
   onMouseEnter={(e) => {
     e.currentTarget.style.transform = "translateY(-4px)";
-    e.currentTarget.style.background = "rgba(157,89,255,0.16)";
+    e.currentTarget.style.background = "rgba(78,168,255,0.16)";
   }}
   onMouseLeave={(e) => {
     e.currentTarget.style.transform = "translateY(0)";
-    e.currentTarget.style.background = "rgba(157,89,255,0.08)";
+    e.currentTarget.style.background = "rgba(78,168,255,0.08)";
   }}
 >
   LinkedIn
@@ -379,11 +392,11 @@ const NameParticles = React.lazy(() => import("./components/NameParticles"));
   style={styles.contactButton}
   onMouseEnter={(e) => {
     e.currentTarget.style.transform = "translateY(-4px)";
-    e.currentTarget.style.background = "rgba(157,89,255,0.16)";
+    e.currentTarget.style.background = "rgba(78,168,255,0.16)";
   }}
   onMouseLeave={(e) => {
     e.currentTarget.style.transform = "translateY(0)";
-    e.currentTarget.style.background = "rgba(157,89,255,0.08)";
+    e.currentTarget.style.background = "rgba(78,168,255,0.08)";
   }}
 >
   Email
@@ -438,8 +451,8 @@ const styles = {
   page: {
     minHeight: "100vh",
     background:
-      "linear-gradient(180deg, #05050a 0%, #090611 35%, #06060a 100%)",
-    color: "#f4efff",
+      "linear-gradient(180deg, #001226 0%, #04213a 35%, #031526 100%)",
+    color: "#eaf6ff",
     fontFamily: "'Rajdhani', 'Noto Sans JP', Arial, sans-serif",
     position: "relative",
     overflowX: "hidden",
@@ -456,8 +469,8 @@ particlesLayer: {
 nameParticle: {
   position: "absolute",
   display: "block",
-  background: "linear-gradient(135deg, #c188ff, #ff78db)",
-  boxShadow: "0 0 12px rgba(193,136,255,0.45)",
+  background: "linear-gradient(135deg, #60a5ff, #7ce0ff)",
+  boxShadow: "0 0 12px rgba(96,165,255,0.45)",
   opacity: 0,
   animationName: "pixelBurst",
   animationTimingFunction: "ease-out",
@@ -486,8 +499,8 @@ particlesLayer: {
 nameParticle: {
   position: "absolute",
   display: "block",
-  background: "linear-gradient(135deg, #c188ff, #ff78db)",
-  boxShadow: "0 0 12px rgba(193,136,255,0.45)",
+  background: "linear-gradient(135deg, #60a5ff, #7ce0ff)",
+  boxShadow: "0 0 12px rgba(96,165,255,0.45)",
   opacity: 0,
   animationName: "pixelBurst",
   animationTimingFunction: "ease-out",
@@ -499,7 +512,7 @@ title: {
   lineHeight: 0.95,
   margin: 0,
   color: "#ffffff",
-  textShadow: "0 0 30px rgba(181,109,255,0.22)",
+  textShadow: "0 0 30px rgba(58,123,213,0.22)",
   fontWeight: 700,
   transition: "0.25s ease",
 },
@@ -532,7 +545,7 @@ title: {
     width: "420px",
     height: "420px",
     background:
-      "radial-gradient(circle, rgba(173,92,255,0.30), transparent 70%)",
+      "radial-gradient(circle, rgba(45,140,255,0.26), transparent 70%)",
     filter: "blur(20px)",
     pointerEvents: "none",
     zIndex: 0,
@@ -545,7 +558,7 @@ title: {
     width: "420px",
     height: "420px",
     background:
-      "radial-gradient(circle, rgba(255,82,191,0.20), transparent 70%)",
+      "radial-gradient(circle, rgba(74,200,255,0.18), transparent 70%)",
     filter: "blur(20px)",
     pointerEvents: "none",
     zIndex: 0,
@@ -573,7 +586,7 @@ title: {
     writingMode: "vertical-rl",
     fontSize: "140px",
     fontWeight: 700,
-    color: "rgba(186, 121, 255, 0.045)",
+    color: "rgba(80,160,255,0.045)",
     userSelect: "none",
     pointerEvents: "none",
     zIndex: 0,
@@ -587,7 +600,7 @@ title: {
     writingMode: "vertical-rl",
     fontSize: "110px",
     fontWeight: 700,
-    color: "rgba(255, 98, 201, 0.04)",
+    color: "rgba(100,190,240,0.04)",
     userSelect: "none",
     pointerEvents: "none",
     zIndex: 0,
@@ -616,14 +629,14 @@ title: {
   badgeLine: {
     width: "26px",
     height: "2px",
-    background: "linear-gradient(90deg, #b56dff, #ff67d4)",
+    background: "linear-gradient(90deg, #4ea8ff, #5de0ff)",
   },
 
   badge: {
     fontSize: "11px",
     letterSpacing: "4px",
     textTransform: "uppercase",
-    color: "#c58aff",
+    color: "#8fd8ff",
     fontWeight: 700,
   },
 
@@ -631,7 +644,7 @@ title: {
     margin: "0 0 14px",
     fontSize: "12px",
     letterSpacing: "3px",
-    color: "#ff7dde",
+    color: "#7ed8ff",
     textTransform: "uppercase",
   },
 
@@ -640,14 +653,14 @@ title: {
     lineHeight: 0.95,
     margin: 0,
     color: "#ffffff",
-    textShadow: "0 0 30px rgba(181,109,255,0.22)",
+    textShadow: "0 0 30px rgba(58,123,213,0.22)",
     fontWeight: 700,
     transition: "0.25s ease",
 
   },
 
   titleAccent: {
-    color: "#c188ff",
+    color: "#7ecbff",
     fontStyle: "italic",
   },
 
@@ -656,7 +669,7 @@ title: {
     fontSize: "15px",
     letterSpacing: "3px",
     textTransform: "uppercase",
-    color: "#ff78db",
+    color: "#7dd3ff",
   },
 
   description: {
@@ -664,7 +677,7 @@ title: {
     maxWidth: "640px",
     fontSize: "17px",
     lineHeight: 1.85,
-    color: "#d2c8e8",
+    color: "#cfeefc",
     fontFamily: "Arial, sans-serif",
   },
 
@@ -683,24 +696,24 @@ title: {
     fontWeight: 700,
     letterSpacing: "2px",
     textTransform: "uppercase",
-    background: "linear-gradient(90deg, #9d59ff, #d86fff)",
-    border: "1px solid rgba(255,255,255,0.12)",
+    background: "linear-gradient(90deg, #2f8fff, #5ec8ff)",
+    border: "1px solid rgba(234,246,255,0.06)",
     clipPath: "polygon(10px 0%, 100% 0%, calc(100% - 10px) 100%, 0% 100%)",
-    boxShadow: "0 8px 30px rgba(157,89,255,0.25)",
+    boxShadow: "0 8px 30px rgba(62,140,222,0.22)",
     transition: "0.3s ease",
     transform: "scale(1.03)",
   },
 
   secondaryButton: {
   textDecoration: "none",
-  color: "#caa6ff",
+  color: "#bfe9ff",
   padding: "14px 24px",
   fontSize: "13px",
   fontWeight: 700,
   letterSpacing: "2px",
   textTransform: "uppercase",
-  background: "rgba(157,89,255,0.08)",
-  border: "1px solid rgba(157,89,255,0.3)",
+  background: "rgba(70,140,255,0.06)",
+  border: "1px solid rgba(78,168,255,0.18)",
   clipPath: "polygon(10px 0%, 100% 0%, calc(100% - 10px) 100%, 0% 100%)",
   backdropFilter: "blur(6px)",
   transition: "0.3s ease",
@@ -716,7 +729,7 @@ title: {
 
   infoBox: {
     background: "rgba(255,255,255,0.03)",
-    border: "1px solid rgba(181,109,255,0.18)",
+    border: "1px solid rgba(78,168,255,0.12)",
     padding: "16px",
     position: "relative",
     overflow: "hidden",
@@ -727,7 +740,7 @@ title: {
     fontSize: "11px",
     letterSpacing: "3px",
     textTransform: "uppercase",
-    color: "#ff7dde",
+    color: "#7ed8ff",
     fontWeight: 700,
     marginBottom: "8px",
   },
@@ -740,7 +753,7 @@ title: {
 
   statusCard: {
     position: "relative",
-    border: "1px solid rgba(181,109,255,0.22)",
+    border: "1px solid rgba(78,168,255,0.12)",
     background:
       "linear-gradient(180deg, rgba(21,12,33,0.9), rgba(10,8,18,0.95))",
     padding: "22px",
@@ -754,7 +767,7 @@ title: {
     left: 0,
     right: 0,
     height: "3px",
-    background: "linear-gradient(90deg, #9d59ff, #ff67d4)",
+    background: "linear-gradient(90deg, #4ea8ff, #5de0ff)",
   },
 
   avatarBox: {
@@ -769,11 +782,11 @@ title: {
     height: "80px",
     borderRadius: "50%",
     padding: "3px",
-    background: "linear-gradient(135deg, #a55dff, #ff76db)",
+    background: "linear-gradient(135deg, #3aa0ff, #7de0ff)",
     display: "flex",
     alignItems: "center",
     justifyContent: "center",
-    boxShadow: "0 8px 30px rgba(165,93,255,0.28)",
+    boxShadow: "0 8px 30px rgba(58,123,213,0.22)",
     overflow: "hidden",
   },
 
@@ -788,7 +801,7 @@ title: {
   avatarTag: {
     marginTop: "12px",
     fontSize: "10px",
-    color: "#c58aff",
+    color: "#8fd8ff",
     letterSpacing: "3px",
     fontWeight: 700,
     textTransform: "uppercase",
@@ -810,7 +823,7 @@ title: {
     fontSize: "11px",
     letterSpacing: "2px",
     textTransform: "uppercase",
-    color: "#ff7dde",
+    color: "#7ed8ff",
     fontWeight: 700,
     marginBottom: "5px",
   },
@@ -850,7 +863,7 @@ title: {
     fontSize: "10px",
     letterSpacing: "3px",
     textTransform: "uppercase",
-    color: "#c58aff",
+    color: "#8fd8ff",
     fontWeight: 700,
   },
 
@@ -872,7 +885,7 @@ title: {
     fontSize: "11px",
     letterSpacing: "4px",
     textTransform: "uppercase",
-    color: "#c58aff",
+    color: "#8fd8ff",
     fontWeight: 700,
   },
 
@@ -888,14 +901,14 @@ title: {
     width: "72px",
     height: "2px",
     margin: "14px auto 0",
-    background: "linear-gradient(90deg, #9d59ff, #ff67d4)",
+    background: "linear-gradient(90deg, #4ea8ff, #7de0ff)",
   },
 
   aboutCard: {
     maxWidth: "860px",
     margin: "0 auto",
     background: "rgba(255,255,255,0.03)",
-    border: "1px solid rgba(181,109,255,0.18)",
+    border: "1px solid rgba(78,168,255,0.12)",
     padding: "26px 28px",
     position: "relative",
     overflow: "hidden",
@@ -907,7 +920,7 @@ title: {
     left: 0,
     width: "6px",
     height: "100%",
-    background: "linear-gradient(180deg, #9d59ff, #ff67d4)",
+    background: "linear-gradient(180deg, #4ea8ff, #7de0ff)",
   },
 
   aboutText: {
@@ -932,17 +945,17 @@ title: {
     letterSpacing: "2px",
     textTransform: "uppercase",
     color: "#d0c4e7",
-    border: "1px solid rgba(181,109,255,0.22)",
-    background: "rgba(155,89,255,0.06)",
+    border: "1px solid rgba(78,168,255,0.18)",
+    background: "rgba(70,140,255,0.04)",
     clipPath: "polygon(8px 0%, 100% 0%, calc(100% - 8px) 100%, 0% 100%)",
   },
 
   skillHighlight: {
     color: "#f0dbff",
     background:
-      "linear-gradient(90deg, rgba(157,89,255,0.22), rgba(255,103,212,0.14))",
-    border: "1px solid rgba(215,145,255,0.45)",
-    boxShadow: "0 8px 24px rgba(157,89,255,0.16)",
+      "linear-gradient(90deg, rgba(78,168,255,0.22), rgba(125,210,255,0.14))",
+    border: "1px solid rgba(120,190,255,0.45)",
+    boxShadow: "0 8px 24px rgba(78,168,255,0.16)",
   },
 
   projectsGrid: {
@@ -953,9 +966,10 @@ title: {
 
   projectCard: {
     position: "relative",
+    zIndex: 1,
     background:
       "linear-gradient(180deg, rgba(15,10,24,0.95), rgba(8,7,14,0.98))",
-    border: "1px solid rgba(181,109,255,0.18)",
+    border: "1px solid rgba(78,168,255,0.12)",
     padding: "26px",
     overflow: "hidden",
     minHeight: "320px",
@@ -975,10 +989,10 @@ transition: "0.3s ease",
   textDecoration: "none",
   textTransform: "uppercase",
   color: "#fff",
-  background: "linear-gradient(90deg, #9d59ff, #d86fff)",
+  background: "linear-gradient(90deg, #2f8fff, #5ec8ff)",
   border: "1px solid rgba(255,255,255,0.12)",
   clipPath: "polygon(10px 0%, 100% 0%, calc(100% - 10px) 100%, 0% 100%)",
-  boxShadow: "0 8px 25px rgba(157,89,255,0.25)",
+  boxShadow: "0 8px 25px rgba(62,140,222,0.25)",
   transition: "0.3s ease",
 },
 
@@ -989,7 +1003,7 @@ transition: "0.3s ease",
     width: "150px",
     height: "150px",
     background:
-      "radial-gradient(circle, rgba(181,109,255,0.16), transparent 70%)",
+      "radial-gradient(circle, rgba(45,110,200,0.14), transparent 70%)",
     pointerEvents: "none",
   },
 
@@ -999,7 +1013,7 @@ transition: "0.3s ease",
     left: 0,
     width: "100%",
     height: "3px",
-    background: "linear-gradient(90deg, #9d59ff, #ff67d4, transparent)",
+    background: "linear-gradient(90deg, #4ea8ff, #7de0ff, transparent)",
   },
 
   projectNum: {
@@ -1007,7 +1021,7 @@ transition: "0.3s ease",
     marginBottom: "12px",
     fontSize: "10px",
     letterSpacing: "3px",
-    color: "#c58aff",
+    color: "#8fd8ff",
     fontWeight: 700,
     textTransform: "uppercase",
   },
@@ -1036,14 +1050,14 @@ transition: "0.3s ease",
     fontSize: "10px",
     letterSpacing: "3px",
     textTransform: "uppercase",
-    color: "#ff79dd",
+    color: "#7ed8ff",
     fontWeight: 700,
     marginBottom: "8px",
   },
 
   projectStack: {
     margin: 0,
-    color: "#d9c2ff",
+    color: "#cfeeff",
     fontSize: "13px",
     lineHeight: 1.6,
   },
@@ -1074,8 +1088,8 @@ transition: "0.3s ease",
     textTransform: "uppercase",
     letterSpacing: "2px",
     color: "#dcb6ff",
-    background: "rgba(157,89,255,0.12)",
-    border: "1px solid rgba(197,138,255,0.35)",
+    background: "rgba(78,168,255,0.12)",
+    border: "1px solid rgba(120,190,255,0.35)",
     clipPath: "polygon(8px 0%, 100% 0%, calc(100% - 8px) 100%, 0% 100%)",
   },
 
@@ -1097,12 +1111,12 @@ transition: "0.3s ease",
   dividerLine: {
     flex: 1,
     height: "1px",
-    background: "linear-gradient(90deg, transparent, #9d59ff, transparent)",
+    background: "linear-gradient(90deg, transparent, #4ea8ff, transparent)",
   },
 
   dividerText: {
     fontSize: "10px",
-    color: "#c58aff",
+    color: "#8fd8ff",
     letterSpacing: "4px",
   },
 
@@ -1125,8 +1139,8 @@ transition: "0.3s ease",
   fontWeight: 700,
   letterSpacing: "2px",
   textTransform: "uppercase",
-  background: "rgba(157,89,255,0.08)",
-  border: "1px solid rgba(197,138,255,0.28)",
+  background: "rgba(78,168,255,0.08)",
+  border: "1px solid rgba(140,190,255,0.18)",
   clipPath: "polygon(10px 0%, 100% 0%, calc(100% - 10px) 100%, 0% 100%)",
   boxShadow: "0 6px 18px rgba(0,0,0,0.15)",
   transition: "0.3s ease",
@@ -1141,7 +1155,7 @@ skillsIconsWrap: {
 
 skillIconCard: {
   background: "linear-gradient(180deg, rgba(24, 12, 45, 0.95), rgba(12, 8, 24, 0.98))",
-  border: "1px solid rgba(178, 102, 255, 0.22)",
+  border: "1px solid rgba(78, 168, 255, 0.22)",
   borderRadius: "18px",
   padding: "22px 16px",
   color: "#fff",

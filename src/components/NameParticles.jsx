@@ -15,7 +15,7 @@ export default function NameParticles() {
   }, []);
 
   return (
-    <div style={{ position: 'relative' }}>
+    <div style={{ position: 'absolute', inset: 0, pointerEvents: 'none', overflow: 'visible', width: '100%', height: '100%', zIndex: 2 }}>
       <div style={{ position: 'absolute', inset: 0, pointerEvents: 'none', overflow: 'visible' }}>
         {nameParticles.map((particle) => (
           <span
@@ -30,8 +30,8 @@ export default function NameParticles() {
                 animationDelay: particle.delay,
                 animationDuration: particle.duration,
               },
-              background: 'linear-gradient(135deg, #c188ff, #ff78db)',
-              boxShadow: '0 0 12px rgba(193,136,255,0.45)',
+              background: 'linear-gradient(135deg, #60a5ff, #7ce0ff)',
+              boxShadow: '0 0 12px rgba(96,165,255,0.45)',
               borderRadius: '2px',
               opacity: 0,
               animationName: 'pixelBurst',
