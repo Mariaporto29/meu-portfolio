@@ -1,39 +1,34 @@
-import React, { useEffect, useMemo, useRef, useState, Suspense } from "react";
-
+import React, { useEffect, useRef, useState, Suspense } from "react";
+import "./App.css";
 
 const skills = [
-  "SQL",
-  "MySQL",
-  "Power BI",
-  "Python",
-  "PHP",
-  "Análise de Dados",
-  "Tratamento de Dados",
-  "GitHub",
-  "SQL Queries",
-  "Testes e Validação",
-  "Dashboards",
+  { label: "SQL", icon: "🗄️" },
+  { label: "MySQL", icon: "💾" },
+  { label: "Python", icon: "🐍" },
+  { label: "Pandas", icon: "pd" },
+  { label: "Power BI", icon: "📊" },
+  { label: "ETL", icon: "🔁" },
+  { label: "Automação de processos", icon: "⚙" },
 ];
-
-const destaqueSkills = ["SQL", "Power BI", "Python", "Análise de Dados"];
 
 const projects = [
   {
     num: "CASE 01",
     title: "Análise de Acidentes",
-    desc: "Tratamento, padronização e análise de dados para identificar padrões e gerar insights estratégicos a partir de grandes volumes de informação.",
-    stack: "SQL · MySQL · Power BI · Data Cleaning",
-    status: "Em evolução",
+    desc: "Estudo de dados de acidentes com foco em organizar os registros e investigar padrões que ajudem a compreender as ocorrências.",
+    stack: "MySQL · SQL · Power BI · Tratamento de dados",
+    status: "Em desenvolvimento",
+    objective: "Investigar padrões nos registros de acidentes.",
+    steps: ["Tratamento e padronização dos dados", "Consultas e análise em MySQL", "Visualização dos resultados no Power BI"],
+    statusNote: "A fonte dos dados, as métricas e as conclusões ainda não estão disponíveis nesta apresentação.",
   },
   {
     num: "CASE 02",
-    title: "JOGO",
-    desc: "Jogo interativo desenvolvido com HTML, CSS e JavaScript, onde o jogador deve desviar de obstáculos que caem continuamente, sobrevivendo o máximo de tempo possível.",
-    stack: "HTML, CSS e JavaScript",
-    status: "Em evolução",
+    title: "Jogo de desviar de obstáculos",
+    desc: "Projeto complementar de front-end: controle o personagem e desvie dos obstáculos pelo maior tempo possível.",
+    stack: "HTML · CSS · JavaScript",
     link: "https://github.com/Mariaporto29/jogo_basico",
   },
-
 ];
 const globalAnimations = `
 @keyframes pixelBurst {
@@ -84,25 +79,25 @@ const NameParticles = React.lazy(() => import("./components/NameParticles"));
   }, []);
 
   return (
-  <div style={styles.page}>
+  <div className="portfolio-page" style={styles.page}>
     <style>{globalAnimations}</style>
     <div style={styles.bgGrid} />
     <div style={styles.bgGlowOne} />
     <div style={styles.bgGlowTwo} />
     <div style={styles.halftoneTop} />
-    <div style={styles.verticalTextRight}>データ</div>
-    <div style={styles.verticalTextLeft}>分析</div>
+    <div className="decoration-vertical-right" aria-hidden="true" style={styles.verticalTextRight}>データ</div>
+    <div className="decoration-vertical-left" aria-hidden="true" style={styles.verticalTextLeft}>分析</div>
 
-    <main style={styles.container}>
-      <section style={styles.hero}>
+    <main className="portfolio-main" style={styles.container}>
+      <section className="portfolio-hero" style={styles.hero}>
         <div style={styles.heroContent}>
           <div style={styles.badgeRow}>
             <span style={styles.badgeLine} />
-            <span style={styles.badge}>PORTFOLIO MODE</span>
+            <span style={styles.badge}>PORTFÓLIO PROFISSIONAL</span>
           </div>
 
           <p style={styles.mangaMini}>
-            データアナリティクス / TECH GIRL / BUILDING SKILLS
+            ANÁLISE DE DADOS / AUTOMAÇÃO / ETL
           </p>
 
           <div
@@ -122,13 +117,12 @@ const NameParticles = React.lazy(() => import("./components/NameParticles"));
   )}
 </div>
 
-          <p style={styles.role}>Data Analytics · SQL · Power BI · Python</p>
+          <p style={styles.role}>Análise de dados · SQL · Power BI · Python</p>
 
           <p style={styles.description}>
-            Atuo com análise de dados e também tenho base em suporte de
-            desenvolvimento, o que fortaleceu minha visão técnica sobre
-            sistemas, validação e resolução de problemas. Meu foco é
-            transformar dados em algo claro, útil e estratégico.
+            Sou estudante de ADS e Assistente de PCP/TI. Atuo com automação e
+            análise de dados, criando rotinas ETL para transformar arquivos em
+            informações úteis à tomada de decisão.
           </p>
 
           <div style={styles.buttonGroup}>
@@ -158,9 +152,9 @@ const NameParticles = React.lazy(() => import("./components/NameParticles"));
           </div>
 
           <div style={styles.heroInfoGrid}>
-            <InfoBox label="FOCO" value="Dados + Solução" />
-            <InfoBox label="BASE" value="Analytics + Dev" />
-            <InfoBox label="MOMENTO" value="Atuando com dados" />
+            <InfoBox label="FOCO" value="Análise + automação" />
+            <InfoBox label="FORMAÇÃO" value="Estudante de ADS" />
+            <InfoBox label="ATUAÇÃO" value="Assistente de PCP/TI" />
           </div>
         </div>
 
@@ -194,28 +188,28 @@ const NameParticles = React.lazy(() => import("./components/NameParticles"));
               </picture>
             </div>
 
-            <div style={styles.avatarTag}>PROFILE CARD</div>
+            <div style={styles.avatarTag}>PERFIL PROFISSIONAL</div>
           </div>
 
           <div style={styles.statusList}>
             <StatusRow label="Nome" value="Maria Porto" />
-            <StatusRow label="Especialidade" value="Data Analytics" />
-            <StatusRow label="Ferramentas" value="SQL · Power BI · Python" />
-            <StatusRow label="Missão" value="Transformar dados em decisão" />
+            <StatusRow label="Atuação" value="PCP e Tecnologia da Informação" />
+            <StatusRow label="Ferramentas" value="SQL · Python · Pandas · Power BI" />
+            <StatusRow label="Interesse" value="Automação e análise de dados" />
 
             <div style={styles.statusRow}>
               <span style={styles.statusLabel}>Modo</span>
               <div style={styles.statusValueInline}>
                 <span ref={dotRef} style={styles.statusDot} />
-                Learning + Building
+                Aprendizado contínuo
               </div>
             </div>
           </div>
 
           <div style={styles.quoteBox}>
-            <span style={styles.quoteLabel}>MANGÁ PANEL</span>
+            <span style={styles.quoteLabel}>MEU FOCO</span>
             <p style={styles.quoteText}>
-              “Aprendizado constante, código também.”
+              “Organizar dados é o primeiro passo para usá-los melhor.”
             </p>
           </div>
         </aside>
@@ -223,12 +217,12 @@ const NameParticles = React.lazy(() => import("./components/NameParticles"));
 
       <Divider />
 
-      <section>
-        <SectionHeader tag="Background" title="Sobre mim" />
+      <section id="sobre">
+        <SectionHeader tag="Perfil" title="Sobre mim" />
         <div style={styles.aboutCard}>
           <div style={styles.aboutStripe} />
           <p style={styles.aboutText}>
-            Tenho interesse em tecnologia com foco em análise de dados, organização de informações e resolução de problemas. Também desenvolvo habilidades em programação, ampliando minha atuação desde o tratamento até a análise de dados. Gosto de transformar dados em informação clara, estratégica e aplicável.
+            Meu trabalho cruza PCP e TI: organizo informações, automatizo etapas e processo arquivos com Python e Pandas. Tenho estudado SQL e Power BI para ampliar minhas análises e comunicar resultados. Quero crescer na área de dados, unindo programação e visão de negócio.
           </p>
         </div>
       </section>
@@ -236,7 +230,7 @@ const NameParticles = React.lazy(() => import("./components/NameParticles"));
       <Divider />
 
       <section>
-  <SectionHeader tag="Arsenal" title="Skills" />
+  <SectionHeader tag="Ferramentas" title="Competências" />
   <div style={styles.skillsIconsWrap}>
     {skills.map((skill) => (
       <div
@@ -253,21 +247,8 @@ const NameParticles = React.lazy(() => import("./components/NameParticles"));
           e.currentTarget.style.boxShadow = "0 8px 24px rgba(0, 0, 0, 0.25)";
         }}
       >
-        <div style={styles.skillEmoji}>
-          {skill === "SQL" && "🗄️"}
-          {skill === "MySQL" && "💾"}
-          {skill === "Power BI" && "📊"}
-          {skill === "Python" && "🐍"}
-          {skill === "PHP" && "💻"}
-          {skill === "Análise de Dados" && "📈"}
-          {skill === "Tratamento de Dados" && "🧹"}
-          {skill === "GitHub" && "🌐"}
-          {skill === "SQL Queries" && "📝"}
-          {skill === "Testes e Validação" && "✅"}
-          {skill === "Dashboards" && "📋"}
-        </div>
-
-        <span style={styles.skillIconText}>{skill}</span>
+        <div style={styles.skillEmoji} aria-hidden="true">{skill.icon}</div>
+        <span style={styles.skillIconText}>{skill.label}</span>
       </div>
     ))}
   </div>
@@ -276,8 +257,8 @@ const NameParticles = React.lazy(() => import("./components/NameParticles"));
       <Divider />
 
       <section id="projetos">
-        <SectionHeader tag="Mission Log" title="Projetos" />
-        <div style={styles.projectsGrid}>
+        <SectionHeader tag="Em destaque" title="Projetos" />
+        <div className="portfolio-projects" style={styles.projectsGrid}>
           {projects.map((project) => (
             <article
   key={project.num}
@@ -308,6 +289,22 @@ const NameParticles = React.lazy(() => import("./components/NameParticles"));
               <h3 style={styles.projectTitle}>{project.title}</h3>
               <p style={styles.projectDesc}>{project.desc}</p>
 
+              {project.objective && (
+                <div style={styles.caseStudy}>
+                  <div>
+                    <span style={styles.projectMetaLabel}>OBJETIVO</span>
+                    <p style={styles.projectStack}>{project.objective}</p>
+                  </div>
+                  <div>
+                    <span style={styles.projectMetaLabel}>ETAPAS</span>
+                    <ul style={styles.projectSteps}>
+                      {project.steps.map((step) => <li key={step}>{step}</li>)}
+                    </ul>
+                  </div>
+                  <p style={styles.projectSubtext}>{project.statusNote}</p>
+                </div>
+              )}
+
               <div style={styles.projectMeta}>
                 <span style={styles.projectMetaLabel}>STACK</span>
                 <p style={styles.projectStack}>{project.stack}</p>
@@ -334,15 +331,11 @@ const NameParticles = React.lazy(() => import("./components/NameParticles"));
       "linear-gradient(90deg, #2f8fff, #5ec8ff)";
   }}
 >
-  Ver no GitHub
+  Ver código no GitHub
 </a>
 ) : (
-  <p style={styles.projectSoon}>Em breve</p>
+  <p style={styles.projectStatus}>{project.status}</p>
 )}
-
-              <p style={styles.projectSubtext}>
-                Publicação planejada para GitHub.
-              </p>
             </article>
           ))}
         </div>
@@ -351,8 +344,9 @@ const NameParticles = React.lazy(() => import("./components/NameParticles"));
       <Divider />
 
       <section id="contato" style={{ paddingBottom: "90px" }}>
-        <SectionHeader tag="Contact" title="Contato" />
-        <div style={styles.contactBox}>
+        <SectionHeader tag="Vamos conversar" title="Contato" />
+        <p style={styles.contactIntro}>Estou aberta a conversar sobre oportunidades em dados, automação e tecnologia.</p>
+        <div className="portfolio-contact" style={styles.contactBox}>
           <a
   href="https://github.com/Mariaporto29"
   target="_blank"
@@ -370,37 +364,6 @@ const NameParticles = React.lazy(() => import("./components/NameParticles"));
   GitHub
 </a>
 
-          <a
-  href="https://linkedin.com/"
-  target="_blank"
-  rel="noreferrer"
-  style={styles.contactButton}
-  onMouseEnter={(e) => {
-    e.currentTarget.style.transform = "translateY(-4px)";
-    e.currentTarget.style.background = "rgba(78,168,255,0.16)";
-  }}
-  onMouseLeave={(e) => {
-    e.currentTarget.style.transform = "translateY(0)";
-    e.currentTarget.style.background = "rgba(78,168,255,0.08)";
-  }}
->
-  LinkedIn
-</a>
-
-          <a
-  href="mailto:seuemail@gmail.com"
-  style={styles.contactButton}
-  onMouseEnter={(e) => {
-    e.currentTarget.style.transform = "translateY(-4px)";
-    e.currentTarget.style.background = "rgba(78,168,255,0.16)";
-  }}
-  onMouseLeave={(e) => {
-    e.currentTarget.style.transform = "translateY(0)";
-    e.currentTarget.style.background = "rgba(78,168,255,0.08)";
-  }}
->
-  Email
-</a>
         </div>
       </section>
     </main>
@@ -974,8 +937,6 @@ title: {
     overflow: "hidden",
     minHeight: "320px",
     transition: "0.3s ease",
-cursor: "pointer",
-transition: "0.3s ease",
 
   },
 
@@ -1045,6 +1006,24 @@ transition: "0.3s ease",
     marginBottom: "18px",
   },
 
+  caseStudy: {
+    display: "grid",
+    gap: "16px",
+    margin: "18px 0",
+    padding: "16px",
+    background: "rgba(78,168,255,0.05)",
+    border: "1px solid rgba(78,168,255,0.14)",
+  },
+
+  projectSteps: {
+    margin: 0,
+    paddingLeft: "18px",
+    color: "#cfeeff",
+    fontSize: "13px",
+    lineHeight: 1.7,
+    fontFamily: "Arial, sans-serif",
+  },
+
   projectMetaLabel: {
     display: "block",
     fontSize: "10px",
@@ -1097,7 +1076,9 @@ transition: "0.3s ease",
     marginTop: "12px",
     marginBottom: 0,
     fontSize: "12px",
-    color: "#706784",
+    lineHeight: 1.6,
+    color: "#b9c8d8",
+    fontFamily: "Arial, sans-serif",
   },
 
   divider: {
@@ -1127,6 +1108,16 @@ transition: "0.3s ease",
   gap: "16px",
   marginTop: "10px",
 },
+
+  contactIntro: {
+    maxWidth: "620px",
+    margin: "-10px auto 22px",
+    textAlign: "center",
+    color: "#cfeefc",
+    fontSize: "16px",
+    lineHeight: 1.7,
+    fontFamily: "Arial, sans-serif",
+  },
 
   contactButton: {
   display: "inline-block",
@@ -1167,7 +1158,6 @@ skillIconCard: {
   minHeight: "120px",
   boxShadow: "0 8px 24px rgba(0, 0, 0, 0.25)",
   transition: "all 0.3s ease",
-  cursor: "pointer",
   position: "relative",
   overflow: "hidden",
 },
