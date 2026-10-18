@@ -172,7 +172,7 @@ export default function App() {
         <section className="hero section-wrap" id="inicio">
           <div className="hero-copy">
             <p className="eyebrow"><span className="signal-dot" /> PORTFÓLIO INTERATIVO <span className="eyebrow-line" /></p>
-            <h1>Dados em jogo.<br /><span>Decisões em foco.</span></h1>
+            <h1>PCP e tecnologia.<br /><span>Dados na prática.</span></h1>
             <p className="hero-intro">
               Sou Maria Porto, estudante de ADS e Assistente de PCP/TI. Exploro dados,
               automatizo processos e crio rotinas ETL para transformar informação em ação.
